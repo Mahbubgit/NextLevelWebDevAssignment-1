@@ -19,9 +19,14 @@
 
     /*********************************************************** */
 
-    function filterByRating(items: { title: string; rating: number; }[]): { title: string; rating: number; }[] {
+    type Item = {
+        title: string;
+        rating: number;
+    };
+
+    function filterByRating(items: Item[]): Item[] {
         return items.filter(selectedItem => selectedItem.rating >= 4);
-    }
+    };
 
     const books = [
         { title: "Book A", rating: 4.5 },
@@ -32,6 +37,20 @@
     ];
 
     console.log(filterByRating(books));
+
+    /*********************************************************** */
+
+    function concatenateArrays<T>(...arrays: T[][]): T[] {
+        let outputArray: T[] = [];
+        for (const arrayElement of arrays) {
+            outputArray = outputArray.concat(arrayElement);
+        }
+        return outputArray;
+    };
+
+
+    console.log(concatenateArrays(["a", "b"], ["c"]));
+    console.log(concatenateArrays([1, 2], [3, 4], [5]));
 
     //**Finish */
 }
