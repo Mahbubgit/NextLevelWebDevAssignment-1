@@ -155,5 +155,32 @@
     console.log(getDayType(Day.Sunday));
     console.log(getDayType(Day.Thursday));
 
+    /*********************************************************** */
+    
+    async function squareAsync(n: number): Promise<number> {
+        return new Promise<number>((resolve, reject) => {
+            setTimeout(() => {
+                if (n >= 0) {
+                    resolve(n * n)
+                }
+                else {
+                    reject(new Error('Negative number not allowed'))
+                }
+            }, 1000);
+        });
+    }
+
+    async function testSquareAsync(n:number) {
+        try {
+            console.log(await squareAsync(n));
+        }
+        catch (error) {
+            console.log('', error);
+        }
+    };
+
+    testSquareAsync(4);
+    testSquareAsync(-3);
+
     //**Finish **/
 }
