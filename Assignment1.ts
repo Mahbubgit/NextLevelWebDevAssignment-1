@@ -99,5 +99,36 @@
     console.log(processValue('hello'));
     console.log(processValue(10));
 
+    /*********************************************************** */
+
+    interface Product {
+        name: string;
+        price: number;
+    };
+
+    function getMostExpensiveProduct(products: Product[]): Product[] | null {
+        if (products.length === 0) {
+            return null;
+        }
+
+        const mostExpensivePrice = Math.max(...products.map(expensiveProduct => expensiveProduct.price));
+
+        const mostExpensiveProduct = products.filter(product => product.price === mostExpensivePrice);
+
+        return mostExpensiveProduct;
+    }
+
+    const products = [
+        { name: "Pen", price: 10 },
+        { name: "Notebook", price: 25 },
+        { name: "Bag", price: 50 },
+        { name: "Keyboard", price: 50 }
+    ];
+
+    const emptyProduct = [];
+
+    console.log(getMostExpensiveProduct(products));
+    console.log(getMostExpensiveProduct(emptyProduct));
+
     //**Finish **/
 }
